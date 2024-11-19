@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>Fut Rise | Dashboard</title>
 
     
-    <link rel="stylesheet" href="./../css/dashboards.css">
+    <!-- <link rel="stylesheet" href="./../css/dashboards.css"> -->
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
@@ -30,43 +30,43 @@
 
 <body>
 
-    <div class="janela">
-        <div class="header-left">
+    <div class="navbar">
+        <div class="">
             <h1>AquaTech</h1>
 
-            <div class="hello">
+            <div class="">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="btn-nav-white">
+            <div class="">
                 <a href="./cards.html">
-                    <h3>Aquários</h3>
+                    <h3>Perfil</h3>
                 </a>
             </div>
 
-            <div class="btn-nav">
+            <div class="">
 
-                <h3>Gráficos</h3>
+                <h3>Dashboard</h3>
 
             </div>
 
-            <div class="btn-nav-white">
+            <div class="">
                 <a href="./mural.html">
                     <h3>Mural de Avisos</h3>
                 </a>
             </div>
 
-            <div class="btn-logout" onclick="limparSessao()">
+            <div class="" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
 
         </div>
 
-        <div class="dash">
+        <div class="">
             <div id="alerta">
             </div>
 
-            <div class="btns-dash" id="btnAquario">
+            <div class="" id="btnAquario">
                 <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
             </div>
             <div id="graficos">
@@ -79,7 +79,7 @@
 
 </html>
 
-<script>
+<!-- <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
@@ -124,8 +124,8 @@
     function exibirAquario(idAquario) {
         let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
 
-        for (i = 0; i < todosOsGraficos.length; i++) {
-            // exibindo - ou não - o gráfico
+        for (i = 0; i < todosOsGraficos.length; i++) { -->
+            <!-- // exibindo - ou não - o gráfico
             if (todosOsGraficos[i].id != idAquario) {
                 let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
                 if (elementoAtual.classList.contains("display-block")) {
@@ -315,4 +315,4 @@
             });
 
     }
-</script>
+</script> -->

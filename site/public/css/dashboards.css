@@ -1,6 +1,6 @@
-/* pagina mural */
+/* -----  pagina mural */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
   margin: 0;
@@ -107,10 +107,10 @@ body {
 
 .div-buttons>* {
   margin-left: 30px;
-}
+} */
 
-/* pagina graficos */
-
+/* ----- pagina graficos */
+/* 
 .dash-header {
   background-color: #212124;
 }
@@ -126,8 +126,8 @@ body {
 }
 
 .area-parametros-alerta {
-  /* border: 2px solid pink; */
-  display: flex;
+  /* ----- border: 2px solid pink; */
+  /* display: flex;
   flex-direction: column;
   width: 70%;
   margin: auto;
@@ -168,9 +168,9 @@ body {
 
 .perigo-frio {
   background-color: #5c6bc0;
-}
+} */ 
 
-.perigo-quente {
+/* .perigo-quente {
   background-color: #ff7043;
 }
 
@@ -203,10 +203,10 @@ body {
   width: fit-content;
   flex-wrap: wrap;
   display: flex;
-  /* text-align: center; */
-  height: 180px;
-  /* justify-content: right; */
-  background-color: #212124;
+  /* ----- text-align: center; */
+  /* height: 180px; */
+  /* ----- justify-content: right; */
+  /* background-color: #212124;
   font-size: 20px;
 }
 
@@ -323,14 +323,14 @@ body {
 canvas {
   width: 100% !important;
   height: 100% !important;
-}
+} */ 
 
-/* PAGINA DOS GRÁFICOS 2023 */
+/* ----- PAGINA DOS GRÁFICOS 2023 */
 
-.janela {
-  display: flex;
-  /* width: 100vw; */
-}
+/* .janela {
+  display: flex; */
+  /* ----- width: 100vw; */
+/* }
 
 .header-left a {
   text-decoration: none;
@@ -425,4 +425,4 @@ canvas {
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
-}
+} */
