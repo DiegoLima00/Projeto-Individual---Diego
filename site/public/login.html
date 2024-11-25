@@ -11,6 +11,28 @@
 </head>
 
 <body class="body-login">
+    <div class="header">
+        <div class="container">
+          <h1 class="titulo">
+            <img src="assets/imgs/logoCerto.png" alt="Logo" class="logo">
+          </h1>
+          <ul class="navbar">
+            <li class="agora">
+              <a href="#">Inicio</a>
+            </li>
+            <li>
+              <a href="sobre mim.html">Sobre</a>
+            </li>
+            <li>|</li>
+            <li>
+              <a href="login.html">Login</a>
+            </li>
+            <li>
+              <a href="cadastro.html">Cadastro</a>
+            </li>
+          </ul>
+        </div>
+      </div>  
     <div class="login-container">
         <div class="login-box">
             <span class="title-login">Login</span>
@@ -77,7 +99,7 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.ID_USUARIO = json.id_usuario;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.NOMEUSUARIO_USUARIO = json.nomeUsuario;
                     sessionStorage.EMAIL_USUARIO = json.email;

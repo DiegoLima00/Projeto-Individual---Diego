@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaTech | Avisos</title>
+
+    <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/estilo.css" />
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="validarSessao(); pesquisarDados()" style="background-color: #ffffff;" ,>
+
+    <div class="janela">
+
+
+        <div class="header-left">
+
+            <h1>Fut Rise</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="cards.html">
+                    <h3>Perfil</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Dashboard</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav">
+                <h3>Estatísticas</h3>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+
+        </div>
+
+        <div class="dash-right">
+
+            <div class="div-estatisticas">
+                <div class="div-grafico">
+                    <canvas class="grafico" id="grafico_radar"></canvas>
+                    <div class="div-kpis">
+                        <div class="div-kpi"><span>MELHOR PONTO:</span> <span id="numero_maior">Ritmo</span></div>
+                        <div class="div-kpi"><span>PONTO A MELHORAR:</span> <span id="numero_menor">Finalização</span>
+                        </div>
+                        <div class="div-kpi"><span>OVERALL:</span> <span id="numero_overall">50</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="div-formulario">
+                <div class="div-coluna">
+                    <div class="div-texto">
+                        Ritmo
+                    </div>
+                    <div class="div-linha">
+                        <div class="div-circulo">
+                            <span onclick="diminuirEstatistica('ritmo')">-</span>
+                        </div>
+                        <div class="div-circulo2">
+                            <span onclick="melhorarEstatistica('ritmo')">+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-coluna">
+                    <div class="div-texto">
+                        Finalização
+                    </div>
+                    <div class="div-linha">
+                        <div class="div-circulo">
+                            <span onclick="diminuirEstatistica('finalizacao')">-</span>
+                        </div>
+                        <div class="div-circulo2">
+                            <span onclick="melhorarEstatistica('finalizacao')">+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-coluna">
+                    <div class="div-texto">
+                        Passe
+                    </div>
+                    <div class="div-linha">
+                        <div class="div-circulo">
+                            <span onclick="diminuirEstatistica('passe')">-</span>
+                        </div>
+                        <div class="div-circulo2">
+                            <span onclick="melhorarEstatistica('passe')">+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-coluna">
+                    <div class="div-texto">
+                        Drible
+                    </div>
+                    <div class="div-linha">
+                        <div class="div-circulo">
+                            <span onclick="diminuirEstatistica('drible')">-</span>
+                        </div>
+                        <div class="div-circulo2">
+                            <span onclick="melhorarEstatistica('drible')">+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-coluna">
+                    <div class="div-texto">
+                        Físico
+                    </div>
+                    <div class="div-linha">
+                        <div class="div-circulo">
+                            <span onclick="diminuirEstatistica('fisico')">-</span>
+                        </div>
+                        <div class="div-circulo2">
+                            <span onclick="melhorarEstatistica('fisico')">+</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="div-coluna">
+                    <div class="div-texto">
+                        Defesa
+                    </div>
+                    <div class="div-linha">
+                        <div class="div-circulo">
+                            <span onclick="diminuirEstatistica('defesa')">-</span>
+                        </div>
+                        <div class="div-circulo2">
+                            <span onclick="melhorarEstatistica('defesa')">+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>
+
+<script>
+    plotarGrafico();
+
+    function plotarGrafico(dados) {
+
+        if (window.myChart) {
+            window.myChart.destroy(); // Destrua o gráfico anterior
+        }
+
+        var dados = [dados[0].ritmo, dados[0].finalizacao, dados[0].passe, dados[0].drible, dados[0].fisico, dados[0].defesa];
+        var labels = ['Ritmo', 'Finalização', 'Passe', 'Drible', 'Físico', 'Defesa'];
+
+        const ctx = document.getElementById('grafico_radar');
+        window.myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Competências atendidas',
+                    data: dados,
+                    borderWidth: 1,
+                    borderColor: '#00ffff',
+                    backgroundColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        min: 0, // Define o valor mínimo (0)
+                        max: 100, // Define o valor máximo (100)
+                        ticks: {
+                            display: false // Desabilita os ticks (valores numéricos) do gráfico
+                        },
+                        pointLabels: {
+                            font: {
+                                weight: 'bold', // Deixa as labels em negrito
+                                size: 14 // Tamanho da fonte
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function melhorarEstatistica(campo_melhora) {
+
+        fetch(`/estatistica/melhorarEstatistica`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id_usuarioServer: sessionStorage.ID_USUARIO,
+                campo_melhoraServer: campo_melhora
+            })
+        })
+            .then((response) => {
+                if (response.ok) {
+                    console.log(`melhoria contabilizada`);
+                    pesquisarDados();
+                } else {
+                    console.error("Erro no melhoria da estatística");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro ao atualizar a dashboard: ${error.message}`);
+            });
+    }
+
+
+    function diminuirEstatistica(campo_melhora) {
+
+        fetch(`/estatistica/diminuirEstatistica`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id_usuarioServer: sessionStorage.ID_USUARIO,
+                campo_melhoraServer: campo_melhora
+            })
+        })
+            .then((response) => {
+                if (response.ok) {
+                    console.log(`melhoria contabilizada`);
+                    pesquisarDados();
+                } else {
+                    console.error("Erro no melhoria da estatística");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro ao atualizar a dashboard: ${error.message}`);
+            });
+    }
+
+    function pesquisarDados() {
+
+        fetch(`/estatistica/pesquisarDados/${sessionStorage.ID_USUARIO}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            // body: JSON.stringify({
+            //     id_usuarioServer: sessionStorage.ID_USUARIO
+            // })
+        })
+            .then((response) => {
+                if (response.ok) {
+                    console.log(`dash atualizada`);
+
+                    response.json().then((dados) => {
+                        console.log(dados);
+
+                        plotarGrafico(dados);
+                    })
+                } else {
+                    console.error("Erro na atualização da estatística");
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro ao atualizar a dashboard: ${error.message}`);
+            });
+    }
+
+</script>
