@@ -3,7 +3,7 @@ var database = require("../database/config");
 function melhorarEstatistica(id_usuario, campo_melhora) {
 
   var instrucaoSql = `
-    UPDATE estatistica SET ${campo_melhora} = ${campo_melhora} + 2
+    UPDATE estatistica SET ${campo_melhora} = ${campo_melhora} + 5
     	WHERE fk_usuario = ${id_usuario};`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -13,7 +13,7 @@ function melhorarEstatistica(id_usuario, campo_melhora) {
 function diminuirEstatistica(id_usuario, campo_melhora) {
 
   var instrucaoSql = `
-    UPDATE estatistica SET ${campo_melhora} = ${campo_melhora} - 2
+    UPDATE estatistica SET ${campo_melhora} = ${campo_melhora} - 5
     	WHERE fk_usuario = ${id_usuario};`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

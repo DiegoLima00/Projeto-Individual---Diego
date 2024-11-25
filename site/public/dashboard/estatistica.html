@@ -20,7 +20,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(); pesquisarDados()" style="background-color: #ffffff;" ,>
+<body onload="validarSessao(); pesquisarDados(); plotarGrafico()" style="background-color: #ffffff;" ,>
 
     <div class="janela">
 
@@ -164,8 +164,7 @@
     plotarGrafico();
 
     function plotarGrafico(dados) {
-
-        if (window.myChart) {
+       if (window.myChart) {
             window.myChart.destroy(); // Destrua o gráfico anterior
         }
 
@@ -193,7 +192,7 @@
                         min: 0, // Define o valor mínimo (0)
                         max: 100, // Define o valor máximo (100)
                         ticks: {
-                            display: false // Desabilita os ticks (valores numéricos) do gráfico
+                            display: true // Desabilita os ticks (valores numéricos) do gráfico
                         },
                         pointLabels: {
                             font: {
@@ -205,6 +204,7 @@
                 }
             }
         });
+
     }
 
     function melhorarEstatistica(campo_melhora) {

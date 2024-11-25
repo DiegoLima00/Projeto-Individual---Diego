@@ -366,9 +366,9 @@ input {
 
 .body-login{
   font-family: 'Poppins', sans-serif;
-  height: 100vh;
+  height: 89.2vh;
   display: flex;
-  background-image: url('../assets/imgs/thirdSocc.jpg'); /* Caminho para sua imagem de fundo */
+  background-image: url('../assets/imgs/thirdSocc.jpg'); /* Caminho para imagem de fundo */
   background-size: cover; 
   background-position: right;
 }
@@ -377,7 +377,7 @@ input {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: right; /* Alinha os itens à direita */
+  justify-content: center; /* Alinha os itens à direita */
   gap: 50px; /* Cria um espaçamento controlado entre os itens */
   align-items: center;
   background: rgba(0, 0, 0, 0.5); /* Fundo escuro para contraste */
@@ -474,4 +474,32 @@ input {
 
 .soccer-text p {
   font-size: 1.5em;
+}
+
+.icon-section {
+  display: flex;
+  justify-content: space-around; /* Espaçamento uniforme entre os itens */
+  align-items: flex-start; /* Alinha os itens ao topo */
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.icon-item {
+  text-align: justify;
+  text-align: center; /* Centraliza o texto em relação à imagem */
+  max-width: 300px; /* Limita a largura para melhor alinhamento */
+}
+
+.icon-item img {
+  width: 100px; /* Define o tamanho das imagens */
+  height: 100px;
+  object-fit: cover;
+}
+
+.icon-item p {
+ 
+  margin-top: 10px; /* Espaçamento entre a imagem e o texto */
+  font-size: 1rem;
+  font-weight: 400; /* Usa um peso válido para a fonte */
+  color: #000000;
 }
