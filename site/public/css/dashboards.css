@@ -512,7 +512,7 @@ canvas {
 .janela {
   display: flex;
   background-color: #F5F5F5;
-  height: 100vh;
+  /* height: 100vh; */
   width: 100vw;
   overflow: hidden;
 }
@@ -626,6 +626,8 @@ canvas {
 .div-pai{
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 
 }
 
@@ -633,4 +635,29 @@ video{
   height: 20vh;
   width: 17vw;
   margin-left: 330px;
+}
+
+.main{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 80vw;
+  height: 25vh;
+  margin-left: 130px;
+}
+
+h2{
+  font-weight: bold;
+  align-items: center;
+  font-size: 5vh;
+  text-align: center;
+  margin-left: 200px;
+}
+
+h4{
+  font-weight: bold;
+  align-items: center;
+  font-size: 2vh;
+  text-align: center;
+  margin-left: 200px;
 }
