@@ -8,6 +8,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
     </style>
     <link rel="stylesheet" href="css/estilo.css">
+    <link rel="icon" href="./assets/icon/ico.ico">
 </head>
 
 <body>
@@ -33,6 +34,12 @@
             </ul>
         </div>
     </div>
+    <div class="login">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
     <div class="body-login">
         <div class="login-container">
             <div class="login-box">
@@ -60,6 +67,7 @@
 
         </div>
     </div>
+</div>
 </body>
 
 </html>
@@ -129,8 +137,8 @@
         return false;
     }
 
-    // function sumirMensagem() {
-    //     textbox.style.display = "none"
-    // }
+    function sumirMensagem() {
+        textbox.style.display = "none"
+    }
 
 </script>

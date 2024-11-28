@@ -2,11 +2,11 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/ico.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Avisos</title>
+    <title>Fut Rise | Estatísticas</title>
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
@@ -39,11 +39,11 @@
                 </a>
             </div>
 
-            <div class="btn-nav-white">
+            <!-- <div class="btn-nav-white">
                 <a href="./dashboard.html">
                     <h3>Dashboard</h3>
                 </a>
-            </div>
+            </div> -->
 
             <div class="btn-nav">
                 <h3>Estatísticas</h3>
@@ -56,15 +56,29 @@
         </div>
 
         <div class="dash-right">
-
             <div class="div-estatisticas">
+                <div class="div-metricas">
+                    <div class="div-metrica"><span>Ritmo:</span> <span id="span_ritmo"></span></div>
+                    <div class="div-metrica"><span>Finalização:</span> <span id="span_finalizacao"></span></div>
+                    <div class="div-metrica"><span>Passe:</span> <span id="span_passe"></span></div>
+                    <div class="div-metrica"><span>Drible:</span> <span id="span_drible"></span></div>
+                    <div class="div-metrica"><span>Físico:</span> <span id="span_fisico"></span></div>
+                    <div class="div-metrica"><span>Defesa:</span> <span id="span_defesa"></span></div> <br>
+                    <div class="div-metrica2"><span>Patentes:</span><span id="span_metrica2"> <b>Iniciante:</b> Overall menor ou igual à <b>40</b> <br>
+                                                                                             <b>Amador:</b> Overall menor ou igual à <b>60</b><br>
+                                                                                             <b>Intermediário:</b> Overall menor ou igual à <b>80</b><br>
+                                                                                             <b>Profissional:</b> Overall menor ou igual à <b>90</b><br>
+                                                                                             <b>Mestre:</b> Overall maior que <b>90</b>
+                    </span></div>
+                </div>
                 <div class="div-grafico">
                     <canvas class="grafico" id="grafico_radar"></canvas>
                     <div class="div-kpis">
-                        <div class="div-kpi"><span>MELHOR PONTO:</span> <span id="numero_maior">Ritmo</span></div>
-                        <div class="div-kpi"><span>PONTO A MELHORAR:</span> <span id="numero_menor">Finalização</span>
+                        <div class="div-kpi"><span>MELHOR PONTO:</span> <span id="span_maior">Ritmo</span></div>
+                        <div class="div-kpi"><span>PONTO A MELHORAR:</span> <span id="span_menor">Finalização</span>
                         </div>
-                        <div class="div-kpi"><span>OVERALL:</span> <span id="numero_overall">50</span></div>
+                        <div class="div-kpi"><span>OVERALL:</span> <span id="span_overall"></span></div>
+                        <div class="div-kpi"><span>PATENTE:</span> <span id="span_patente"></span></div>
                     </div>
                 </div>
             </div>
@@ -162,6 +176,7 @@
 
 <script>
     plotarGrafico();
+    
 
     function plotarGrafico(dados) {
        if (window.myChart) {
@@ -180,7 +195,7 @@
                     label: 'Competências atendidas',
                     data: dados,
                     borderWidth: 1,
-                    borderColor: '#00ffff',
+                    borderColor: '#92140C',
                     backgroundColor: '#ffffff'
                 }]
             },
@@ -208,6 +223,34 @@
     }
 
     function melhorarEstatistica(campo_melhora) {
+        if (campo_melhora == 'ritmo') {
+            var estatistica_atual = sessionStorage.RITMO;
+        }
+
+        if (campo_melhora == 'finalizacao') {
+            var estatistica_atual = sessionStorage.FINALIZACAO;
+        }
+
+        if (campo_melhora == 'passe') {
+            var estatistica_atual = sessionStorage.PASSE;
+        }
+        
+        if (campo_melhora == 'fisico') {
+            var estatistica_atual = sessionStorage.FISICO;
+        }
+
+        if (campo_melhora == 'drible') {
+            var estatistica_atual = sessionStorage.DRIBLE;
+        }
+
+        if (campo_melhora == 'defesa') {
+            var estatistica_atual = sessionStorage.DEFESA;
+        }
+        
+        if (estatistica_atual >= 100) {
+            alert('Estatísticas não podem passar de 100!');
+            return false;
+        }
 
         fetch(`/estatistica/melhorarEstatistica`, {
             method: "PUT",
@@ -234,6 +277,35 @@
 
 
     function diminuirEstatistica(campo_melhora) {
+
+        if (campo_melhora == 'ritmo') {
+            var estatistica_atual = sessionStorage.RITMO;
+        }
+
+        if (campo_melhora == 'finalizacao') {
+            var estatistica_atual = sessionStorage.FINALIZACAO;
+        }
+
+        if (campo_melhora == 'passe') {
+            var estatistica_atual = sessionStorage.PASSE;
+        }
+        
+        if (campo_melhora == 'fisico') {
+            var estatistica_atual = sessionStorage.FISICO;
+        }
+
+        if (campo_melhora == 'drible') {
+            var estatistica_atual = sessionStorage.DRIBLE;
+        }
+
+        if (campo_melhora == 'defesa') {
+            var estatistica_atual = sessionStorage.DEFESA;
+        }
+        
+        if (estatistica_atual <= 0) {
+            alert('Estatísticas não podem ser menores que 0!');
+            return false;
+        }
 
         fetch(`/estatistica/diminuirEstatistica`, {
             method: "PUT",
@@ -275,7 +347,13 @@
 
                     response.json().then((dados) => {
                         console.log(dados);
-
+                        sessionStorage.RITMO = dados[0].ritmo;
+                        sessionStorage.FINALIZACAO = dados[0].finalizacao;
+                        sessionStorage.PASSE = dados[0].passe;
+                        sessionStorage.DRIBLE = dados[0].drible;
+                        sessionStorage.FISICO = dados[0].fisico;
+                        sessionStorage.DEFESA = dados[0].defesa;
+                        preencherDash(dados);
                         plotarGrafico(dados);
                     })
                 } else {
@@ -287,4 +365,70 @@
             });
     }
 
+function preencherDash(dados) {
+    var lista_estatistica = [dados[0].ritmo, dados[0].finalizacao, dados[0].passe, dados[0].drible, dados[0].fisico, dados[0].defesa];
+    var lista_nome = ['Ritmo', 'Finalização', 'Passe', 'Drible', 'Físico', 'Defesa'];
+    var maior = lista_estatistica[0]
+    var nome_maior = ''
+    var menor = lista_estatistica[0]
+    var nome_menor = '' 
+    var overall = 0
+
+    span_ritmo.innerHTML = lista_estatistica[0]
+    span_finalizacao.innerHTML = lista_estatistica[1]
+    span_passe.innerHTML = lista_estatistica[2]
+    span_drible.innerHTML = lista_estatistica[3]
+    span_fisico.innerHTML = lista_estatistica[4]
+    span_defesa.innerHTML = lista_estatistica[5]
+
+for (var i = 0; i < lista_estatistica.length; i++) {
+    var estatistica_atual = lista_estatistica[i];
+    var nome_atual = lista_nome[i]
+
+    if (estatistica_atual >= maior) {
+        maior = estatistica_atual
+        nome_maior = nome_atual  
+    } 
+
+    if (estatistica_atual <= menor) {
+        menor = estatistica_atual
+        nome_menor = nome_atual
+    }
+
+    overall += estatistica_atual
+
+    
+}
+
+    span_maior.innerHTML = nome_maior
+    span_menor.innerHTML = nome_menor 
+    var overall_final = (overall / 6).toFixed(0)
+    span_overall.innerHTML = overall_final
+
+    if (overall_final <= 40) {
+        span_patente.innerHTML = 'Iniciante'
+        span_patente.style.backgroundColor = '#f5f5f5'
+        span_patente.style.color = '#000000'
+    }
+    else if (overall_final <= 60) {
+        span_patente.innerHTML = 'Amador'
+        span_patente.style.backgroundColor = '#f5f5f5'
+        span_patente.style.color = '#000000'
+    }
+    else if (overall_final <= 80) {
+        span_patente.innerHTML = 'Intermediário'
+        span_patente.style.backgroundColor = '#b88d0b'
+        span_patente.style.color = '#000000'
+    }
+    else if (overall_final <= 90) {
+        span_patente.innerHTML = 'Profissional'
+        span_patente.style.backgroundColor = '#9b9b9b'
+        span_patente.style.color = '#000000'
+    }
+    else {
+        span_patente.innerHTML = 'Mestre'
+        span_patente.style.backgroundColor = '#FFD700'
+        span_patente.style.color = '#000000'
+    }
+}
 </script>

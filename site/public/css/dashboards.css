@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Saira Condensed', sans-serif;
 }
 
 .label-captura {
@@ -15,8 +15,9 @@ body {
 
 .dash-right {
   display: flex;
-  color: #ED145B;
-  font-family: "Poppins", sans-serif;
+  color: #92140C;
+  font-family: 'Saira Condensed', sans-serif;
+  margin-right: 100px;
 }
 
 .div-estatisticas {
@@ -44,7 +45,7 @@ body {
 }
 
 .div-kpi {
-  border: 1px solid #ff7043;
+  border: 1px solid #92140C;
   border-radius: 20px;
   padding: 20px;
   display: flex;
@@ -54,11 +55,61 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: white;
+  background-color: #F5F5F5;
   box-shadow: 0 8px 10px black;
 }
 
 .div-kpi span {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.div-metricas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 80px;
+}
+
+.div-metrica {
+  border: 1px solid #92140C;
+  border-radius: 10px;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 6vh;
+  width: 15vw;
+  background-color: #F5F5F5;
+  box-shadow: 0 8px 10px black;
+  margin-right: 70px;
+}
+
+.div-metrica span {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.div-metrica2 {
+  border: 1px solid #92140C;
+  border-radius: 10px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+  background-color: #F5F5F5;
+  box-shadow: 0 8px 10px black;
+  margin-right: 70px;
+  font-size: small;
+}
+
+.div-metrica2 span {
   width: 100%;
   margin-bottom: 5px;
 }
@@ -71,7 +122,7 @@ body {
   border-radius: 0.8vw;
   padding: 0.5vw;
   width: 12vw;
-  height: 13vw;
+  height: 10vw;
   transition: 0.3s;
 }
 .div-coluna:hover{
@@ -93,7 +144,7 @@ display: flex;
 flex-direction:row;
 justify-content: space-between;
 width: 80vw;
-height: 30vh;
+height: 25vh;
 align-self: flex-start;
 align-items: center;
 background-color: #353238;
@@ -104,7 +155,7 @@ border-top: 3px solid black;
 .div-linha {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 10px;
 }
 
@@ -112,13 +163,13 @@ border-top: 3px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 7px;
   background-color: #e83b3b;
   color: white;
   font-size: 3vw;
-  padding: 10px;
+  padding: 5px;
   border-radius: 50%;
-  width: 5vw;
+  width: 4vw;
   height: 8vh;
   cursor: pointer;
   transition: 0.3s;
@@ -133,13 +184,13 @@ border-top: 3px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 7px;
   background-color: #1dbc3a;
   color: white;
   font-size: 3vw;
-  padding: 10px;
+  padding: 5px;
   border-radius: 50%;
-  width: 5vw;
+  width: 4vw;
   height: 8vh;
   cursor: pointer;
   transition: 0.3s;
@@ -193,7 +244,7 @@ border-top: 3px solid black;
   width: 120px;
 } */
 
-.publicacao-btn-editar {
+/* .publicacao-btn-editar {
   cursor: pointer;
   font-family: "Poppins", sans-serif;
   border: 0;
@@ -215,7 +266,7 @@ border-top: 3px solid black;
   align-items: stretch;
   border-bottom: 3px solid #e6005a;
   padding: 20px;
-}
+} */
 
 .publicacao>*:not(:last-child) {
   padding: 0 0 10px 0;
@@ -412,7 +463,7 @@ border-top: 3px solid black;
 }
 
 .btn-chart {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Saira Condensed', sans-serif;
   border: 0;
   font-weight: 600;
   font-size: 18px;
@@ -460,9 +511,9 @@ canvas {
 
 .janela {
   display: flex;
-  background-color: #e83b3b;
+  background-color: #F5F5F5;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
 }
 
@@ -485,21 +536,19 @@ canvas {
   border-right: 3px solid black;
   background-color: #353238 ;
   background: linear-gradient(to top, #353238, #8F8896);
-  font-family: 'Poppins';
+  font-family: 'Saira Condensed', sans-serif;
   font-weight: 800;
 }
 
 .dash-right {
   display: flex;
   width: 100vw;
-
   position:relative;
   justify-content: space-between;
   top: 0;
-  display: flex;
   flex-direction: column;
   left: 308px;
-align-items: center;
+  align-items: center;
   height: 100vh;
   overflow: auto;
   background-color: #F5F5F5;
@@ -512,7 +561,7 @@ align-items: center;
 }
 .header-left h1 {
   font-size: 4vw;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .hello {
@@ -543,14 +592,14 @@ align-items: center;
 .btn-nav-white {
   width: 40%;
   background-color: white;
-  border: 3px solid #e6005a;
+  border: 3px solid #92140C;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
 }
 
 .btn-nav-white h3 {
-  color: #e6005a;
+  color: #92140C;
   padding: 0;
   margin: 0;
 }
@@ -572,4 +621,16 @@ align-items: center;
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
+}
+
+.div-pai{
+  display: flex;
+  flex-direction: column;
+
+}
+
+video{
+  height: 20vh;
+  width: 17vw;
+  margin-left: 330px;
 }
