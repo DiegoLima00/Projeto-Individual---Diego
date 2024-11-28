@@ -8,14 +8,14 @@
 
   <title>Fut Rise | Cadastro </title>
 
-    <script src="./js/sessao.js"></script>
+  <script src="./js/sessao.js"></script>
 
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/ico.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="./css/estilo.css">
+  <link rel="icon" href="./assets/icon/ico.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
 
-<body> 
+<body>
   <!-- onload="listar()" -->
   <!--header inicio-->
   <div class="header">
@@ -49,44 +49,45 @@
       </div>
     </div>
     <div class="login-container">
-        <div class="login-box">
-            <span class="title-login">Cadastro</span>
-            <br>
-            <br>
-            <br>
-          <!--
+      <div class="login-box">
+        <span class="title-login">Cadastro</span>
+        <br>
+        <br>
+        <br>
+        <!--
                          Para inserir mais um campo, copie uma das inputs abaixo.
                          Assim que inserir vá para o script abaixo.
                      -->
 
-          <div class="textbox">
-            <span>Nome:</span><br>
-            <input id="nome_input" type="text" />
-          </div>
-          <div class="textbox">
-            <span>Nome de usuário:</span><br>
-            <input id="nomeUsuario_input" type="text" />
-          </div>
-          <div class="textbox">
-            <span>E-mail:</span><br>
-            <input id="email_input" type="text" />
-          </div>
-          <div class="textbox">
-            <span>Senha:</span><br>
-            <input id="senha_input" type="password" />
-          </div>
-          <div class="textbox">
-            <span>Confirmação da Senha:</span><br>
-            <input id="confirmacao_senha_input" type="password" />
-            <div class="submit-btn">
-              <button onclick="cadastrar()">Entrar</button>
-          </div>
-        
-        <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
+        <div class="textbox">
+          <span>Nome:</span><br>
+          <input id="nome_input" type="text" />
         </div>
+        <div class="textbox">
+          <span>Nome de usuário:</span><br>
+          <input id="nomeUsuario_input" type="text" />
+        </div>
+        <div class="textbox">
+          <span>E-mail:</span><br>
+          <input id="email_input" type="text" />
+        </div>
+        <div class="textbox">
+          <span>Senha:</span><br>
+          <input id="senha_input" type="password" />
+        </div>
+        <div class="textbox">
+          <span>Confirmação da Senha:</span><br>
+          <input id="confirmacao_senha_input" type="password" />
+          <div class="submit-btn">
+            <button onclick="cadastrar()">Cadastrar</button>
+          </div>
 
-        <div id="div_erros_login"></div>
+          <div id="div_aguardar" class="loading-div">
+            <img src="./assets/circle-loading.gif" id="loading-gif" />
+          </div>
+
+          <div id="div_erros_login"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -110,6 +111,8 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    // var senhaMaiuscula = senhaVar.toUppercase;
+    // var senhaMinuscula = senhaVar.toLowercase;
 
     // Verificando se há algum campo em branco
     if (
@@ -121,18 +124,82 @@
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "Preencha todos os campos solicitados";
+      "Preencha todos os campos solicitados";
+      alert(`Preencha todos os campos solicitados`)
+      
+      finalizarAguardar();
+      return false;
+    
+    }
+    if (nomeVar.length < 2) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O nome deve conter no mínimo 2 caracteres";
+        alert(`O nome deve conter no mínimo 2 caracteres`)
 
       finalizarAguardar();
       return false;
     }
+
+    if (emailVar.includes(".") == false || emailVar.includes("@") == false) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "O email deve conter ao menos um '@' e um '.'";
+        alert(`O email deve conter ao menos um '@' e um '.'`)
+      finalizarAguardar();
+      return false;
+    }
+
+    if (senhaVar.includes('!') == false ||
+      senhaVar.includes('@') == false ||
+      senhaVar.includes('#') == false ||
+      senhaVar.includes('$') == false ||
+      senhaVar.includes('%') == false ||
+      senhaVar.includes('&') == false ||
+      senhaVar.includes('*') == false) {
+
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "A senha deve conter ao menos um caractere especial";
+        alert(`A senha deve conter ao menos um caractere especial`)
+      finalizarAguardar();
+      return false;
+    }
+
+    if (senhaVar.length < 6) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "A senha deve conter ao menos 6 caracteres";
+        alert(`A senha deve conter ao menos 6 caracteres`)
+      finalizarAguardar();
+      return false;
+    }
+
+    if (senhaVar.toUppercase()) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "A senha deve conter ao menos 1 caractere minúsculo";
+        alert(`A senha deve conter ao menos 1 caractere minúsculo`)
+      finalizarAguardar();
+      return false;
+    }
+
+    if (senhaVar.toLowercase()) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "A senha deve conter ao menos 1 caractere maiúsculo";
+        alert(`A senha deve conter ao menos 1 caractere maiúsculo`)
+      finalizarAguardar();
+      return false;
+    }
+
     if (senhaVar != confirmacaoSenhaVar) {
       cardErro.style.display = "block";
       senha_input.style.border = "solid 1px red";
       confirmacao_senha_input.style.border = "solid 1px red";
       mensagem_erro.innerHTML =
         "A confirmação de senha falhou";
-
+        alert(`A confirmação de senha falhou`)
       finalizarAguardar();
       return false;;
     }
